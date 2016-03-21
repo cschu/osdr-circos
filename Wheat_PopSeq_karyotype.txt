@@ -1,0 +1,14 @@
+chr - chr1A chr1A 0 1178781 dark2-7-qual-1
+chr - chr2A chr2A 0 925171 dark2-7-qual-2
+chr - chr3A chr3A 0 1730000 dark2-7-qual-3
+chr - chr4A chr4A 0 1570000 dark2-7-qual-4
+chr - chr5A chr5A 0 1120000 dark2-7-qual-5
+chr - chr6A chr6A 0 993911 dark2-7-qual-6
+chr - chr7A chr7A 0 1360000 dark2-7-qual-7
+chr - chr1B chr1B 0 1140000 set3-8-qual-1
+chr - chr2B chr2B 0 1120000 set3-8-qual-2
+chr - chr3B chr3B 0 1230000 set3-8-qual-3
+chr - chr4B chr4B 0 1030000 set3-8-qual-4
+chr - chr5B chr5B 0 1550400 set3-8-qual-5
+chr - chr6B chr6B 0 978721 set3-8-qual-6
+chr - chr7B chr7B 0 1185511 set3-8-qual-7

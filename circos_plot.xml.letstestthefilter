@@ -1,0 +1,168 @@
+#/Users/schudomc/Documents/ben_Circos
+
+karyotype = OsDr_karyotype.txt
+chromosomes_units = 100
+chromosomes_order = OsChr1,OsChr2,OsChr3,OsChr4,OsChr5,OsChr6,OsChr7,OsChr8,OsChr9,OsChr10,OsChr11,OsChr12,OsChrUn,OsChrSy,DrChr_1,DrChr_2,DrChr_3,DrChr_4,DrChr_5,DrChr_6,DrChr_7,DrChr_8,DrChr_9,DrChr_10,DrChr_11,DrChr_12,DrChr_13,DrChr_14,DrChr_15,DrChr_16,DrChr_17,DrChr_18,DrChr_19,DrChr_20,DrChr_21
+
+<colors>
+chr1* = red
+chr2* = orange
+chr3* = green
+chr4* = blue
+</colors>
+
+
+
+
+<ideogram>
+
+	<spacing>
+		default = 0.005r
+
+		<pairwise OsChr1 DrChr_1>
+   			spacing = 10r
+  		</pairwise>
+
+  		<pairwise OsChrSy DrChr_21>
+   			spacing = 3r
+  		</pairwise>
+	</spacing>
+
+	#Ideogram position, fill and outline
+	#radius           = 0.4r
+	#thickness        = 60p
+	#fill             = yes
+	#stroke_color     = black
+	#stroke_thickness = 5p
+
+#Ideogram position, fill and outline default
+	radius           = 0.85r
+	thickness        = 75p
+	fill             = yes
+	fill_color       = black
+	stroke_thickness = 2
+	stroke_color     = black
+
+
+	# Minimum definition for ideogram labels.
+
+	show_label       = yes
+	# see etc/fonts.conf for list of font names
+	label_font       = default
+	label_radius     = 1.1r
+	label_size       = 80
+	label_parallel   = no
+
+# Minimum definition for ideogram labels default.
+	#show_label       = yes
+	#label_font       = default
+	#label_radius     = 0.95r
+	#label_with_tag   = yes
+	#label_size       = 24
+	#label_parallel   = no
+	#label_case       = lower
+
+	#Bands definition
+	show_bands = yes
+	fill_bands = yes
+	#band_transparency = 10
+	#band_stroke_thickness = 0p
+	#band_stroke_color = grey
+
+	#Bands definition default
+	#show_bands            = yes
+	#fill_bands            = yes
+	band_stroke_thickness = 2
+	band_stroke_color     = black
+	#band_transparency     = 2
+
+
+</ideogram>
+
+show_ticks          = yes
+show_tick_labels    = yes
+show_grid  = yes
+
+<links>
+
+<link>
+file          = linkdata.txt
+radius        = 1r
+bezier_radius = 0r
+color         = black_a4
+thickness     = 2
+
+# Rule blocks can be added to any <link> or <plot> block and form a
+# decision chain that changes how data points (e.g. links, histogram
+# bins, scatter plot glyphs, etc) are formatted.
+
+<rules>
+
+# The decision chain is composed of one or more <rule> blocks.
+
+<rule>
+
+# Each rule has a condition, formatting statements and an optional
+# 'flow' statement. If the condition is true, the rule is applied to
+# the data point and no further rules are checked (unless
+# flow=continue). If the condition is false, the next rule is checked.
+#
+# var(X) referrs to the value of variable X for the data point. Here 'intrachr' means intra-chromosomal.
+
+condition     = var(intrachr)
+
+# Any links that are intra-chromosomal will not be shown. Further rules are not tested.
+
+show          = no
+
+</rule>
+
+<rule>
+
+# This rule is applied to all remaining links, since its condition is always true.
+
+condition     = 1
+
+# The color of the link is set to the 2nd chromosome in the link
+# coordinate (link's end). Here eval() is required so that the
+# expression var(chr2) is evaluated (we want the result of var(chr2),
+# not the color named "var(chr2)"). Note that for conditions,
+# evaluation is automatic, but required for all other parameters.
+
+color         = eval(var(chr2))
+
+# After this rule is applied, the rule chain continues.
+
+flow          = continue
+</rule>
+
+</rules>
+
+</link>
+
+</links>
+
+
+################################################################
+# The remaining content is standard and required. It is imported
+# from default files in the Circos distribution.
+#
+# These should be present in every Circos configuration file and
+# overridden as required. To see the content of these files,
+# look in etc/ in the Circos distribution.
+
+<image>
+# Included from Circos distribution.
+<<include /etc/image.conf>>
+
+radius* = 3000p
+
+</image>
+
+# RGB/HSV color definitions, color lists, location of fonts, fill patterns.
+# Included from Circos distribution.
+<<include /etc/colors_fonts_patterns.conf>>
+
+# Debugging, I/O an dother system parameters
+# Included from Circos distribution.
+<<include /etc/housekeeping.conf>>
